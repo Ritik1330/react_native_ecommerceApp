@@ -5,10 +5,16 @@ export default {
   add: require('../assets/images/add.png'),
   account: require('../assets/images/account.png'),
   dashboard: require('../assets/images/dashboard.png'),
-
   user: require('../assets/images/user.png'),
-
-
+  email: require('../assets/images/email.png'),
+  lock: require('../assets/images/lock.png'),
+  facebook: require('../assets/images/facebook.png'),
+  google: require('../assets/images/google.png'),
+  search: require('../assets/images/search.png'),
+  back: require('../assets/images/back.png'),
+  bg: require('../assets/images/bg.jpg'),
+  profile: require('../assets/images/profile.png'),
+  // user: require('../assets/images/user.png'),
 
   // dropdownTriangle: require('../assets/images/ic_dropdown.png'),
   // fb: require('../assets/images/ic_facebook.png'),

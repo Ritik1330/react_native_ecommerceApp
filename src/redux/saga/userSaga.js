@@ -1,34 +1,50 @@
-// import { call, put, takeEvery, takeLatest } from 'redux-saga/effects'
-// import Api from '...'
-// import axios from 'axios'
+import {SIGNIN,SIGNOUT} from '../../confing/urls';
+import {loginSuccess, loginFail,logoutSuccess,logoutFail} from '../Slice/userSlice';
+import {call, put, takeEvery, takeLatest} from 'redux-saga/effects';
+import axios from 'axios';
 
-// // worker Saga: will be fired on USER_FETCH_REQUESTED actions
-// function* fetchUser(action) {
-//   try {
-//     const user = yield call(()=>axios.get("https://commerce-nu2t.onrender.com/api/v1/products"))
-//     yield put({ type: 'USER_FETCH_SUCCEEDED', user: user })
-//   } catch (e) {
-//     yield put({ type: 'USER_FETCH_FAILED', message: e.message })
-//   }
+// worker Saga: will be fired on USER_FETCH_REQUESTED actions
+function* fetchUser(action) {
+  try {
+    const login = {
+      email: action.payload.email,
+      password: action.payload.password,
+    };
+
+    const config = {headers: {'Content-Type': 'application/json'}};
+    const data = yield call(() => axios.post(SIGNIN, login, config));
+    // console.log("data");
+    yield put(loginSuccess(data));
+  } catch (e) {
+    // console.log('e');
+
+    yield put(loginFail(e));
+  }
+}
+//logout User
+function* logoutUserSaga(action) {
+  try {
+
+    const data = yield call(() => axios.get(SIGNOUT));
+    // console.log("data");
+    yield put(logoutSuccess(data));
+  } catch (e) {
+    // console.log('e');
+
+    yield put(logoutFail(e));
+  }
+}
+
+export function* watchUsersAsync() {
+  yield takeEvery('user/loginRequst', fetchUser);
+  yield takeEvery('user/logoutRequest', logoutUserSaga);
+  // yield takeEvery(GET_USERS, getUsersSaga)
+  // yield takeEvery(GET_USER_BY_ID, getUserByIdSaga)
+  // yield takeEvery(CREATE_USER, createUserSaga)
+  // yield takeEvery(UPDATE_USER_BY_ID, updateUserSaga)
+  // yield takeEvery(DELETE_USER_BY_ID, deleteUserByIdSaga)
+}
+
+// function*userSaga() {
+//   yield takeLatest('user/userRequst', fetchuser)
 // }
-
-// /*
-//   Starts fetchUser on each dispatched `USER_FETCH_REQUESTED` action.
-//   Allows concurrent fetches of user.
-// */
-// function* mySaga() {
-//   yield takeEvery('USER_FETCH_REQUESTED', fetchUser)
-// }
-
-// /*
-//   Alternatively you may use takeLatest.
-
-//   Does not allow concurrent fetches of user. If "USER_FETCH_REQUESTED" gets
-//   dispatched while a fetch is already pending, that pending fetch is cancelled
-//   and only the latest one will be run.
-// */
-// function* mySaga() {
-//   yield takeLatest('USER_FETCH_REQUESTED', fetchUser)
-// }
-
-// export default mySaga

@@ -1,9 +1,9 @@
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
-import {Home} from '../Screens/';
+import {Home,Settings,CreateProduct} from '../Screens/';
 import colors from '../styles/colors.js';
 import { Image ,Text} from 'react-native';
 import imagePath from '../constants/imagePath';
-
+import HomeStack from './HomeStack'
 
 
 const Tab = createBottomTabNavigator();
@@ -20,7 +20,7 @@ function TabRoutes() {
       }}>
       <Tab.Screen
         name="Home"
-        component={Home}
+        component={HomeStack}
         options={{
           tabBarLabel: 'Home',
         
@@ -51,7 +51,7 @@ function TabRoutes() {
           ),
         }}
        />
-      <Tab.Screen name="Settings1" component={Home} 
+      <Tab.Screen name="Settings1" component={CreateProduct} 
         options={{
           tabBarLabel: 'Create',
           tabBarIcon: ({focused, color, size}) => (
@@ -79,9 +79,9 @@ function TabRoutes() {
             />
           ),
         }}/>
-      <Tab.Screen name="Settings4" component={Home} 
+      <Tab.Screen name="Settings4" component={Settings} 
         options={{
-          tabBarLabel: 'Account',
+          tabBarLabel: 'Settings',
           tabBarIcon: ({focused, color, size}) => (
             <Image
               source={imagePath.account}

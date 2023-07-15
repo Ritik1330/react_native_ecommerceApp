@@ -2,7 +2,10 @@ import {Text, View} from 'react-native';
 import React, {Component, useEffect} from 'react';
 
 import {Provider} from 'react-redux';
-import store from './src/redux/store';
+import {store, persistor} from './src/redux/store';
+//redux prisist
+
+import {PersistGate} from 'redux-persist/integration/react';
 import strings from './src/constants/lang/i18n';
 import Routes from './src/Navigation/Routes';
 import {SafeAreaProvider} from 'react-native-safe-area-context';
@@ -17,7 +20,9 @@ function App() {
     <>
       <SafeAreaProvider>
         <Provider store={store}>
-          <Routes />
+          <PersistGate loading={null} persistor={persistor}>
+            <Routes />
+          </PersistGate>
         </Provider>
       </SafeAreaProvider>
     </>

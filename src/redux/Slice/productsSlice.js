@@ -2,11 +2,11 @@ import {createSlice} from '@reduxjs/toolkit';
 
 const initialState = {
   loading: false,
-  products: null,
+  products: [],
   error: null,
 };
 
-export const counterSlice = createSlice({
+export const productsSlice = createSlice({
   name: 'products',
   initialState,
   reducers: {
@@ -27,6 +27,6 @@ export const counterSlice = createSlice({
 
 // 1Action creators are generated for each case reducer function
 export const {productsRequst, productsSuccess, productsFail} =
-  counterSlice.actions;
+productsSlice.actions;
 
-export default counterSlice.reducer;
+export default productsSlice.reducer;
