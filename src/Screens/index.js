@@ -5,3 +5,6 @@ export {default as SignUp} from './SignUp/SignUp';
 export {default as Settings} from './me/Me';
 export {default as CreateProduct} from './CreateProduct/CreateProduct';
 export {default as ProductDetails} from './ProductDetails/ProductDetails';
+export {default as Cart} from './cart/Cart';
+export {default as ShippingDetails} from './shippingDetails/ShippingDetails';
+export {default as Confarm} from './confarm/Confarm.js';

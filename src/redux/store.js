@@ -2,7 +2,9 @@ import {combineReducers, configureStore} from '@reduxjs/toolkit';
 import createSagaMiddleware from 'redux-saga';
 // import userSlice from './Slice/userSlice';
 import productsSlice from './Slice/productsSlice';
+import productSlice from './Slice/productSlice';
 import userSlice from './Slice/userSlice';
+import cartSlice from './Slice/cartSlice';
 import {rootSaga} from '../redux/saga/index';
 // redux prisist
 import {persistStore, persistReducer} from 'redux-persist';
@@ -17,6 +19,8 @@ const persistConfig = {
 const rootReducers = combineReducers({
   products: productsSlice,
   user: userSlice,
+  cart: cartSlice,
+  product:productSlice
 });
 
 const persistedReducer = persistReducer(persistConfig, rootReducers);

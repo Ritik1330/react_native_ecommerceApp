@@ -5,7 +5,12 @@ export default {
   HOME_STACK: 'homeStack',
   SEARCH: 'search',
   PRODUCT_INFO: 'ProductDetails',
+  CART: 'cart',
+  SHIPPING_INFO: 'shippingDetails',
+  CREATE_PRODUCT: 'createProduct',
+  CONFARM: 'confarm',
 
+  //dddddddddddddddddddd
   OTP_VERIFICATION: 'otpVerfication',
   OUTER_SCREEN: 'outerScreen',
   OFFERS: 'offers',

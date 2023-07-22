@@ -1,16 +1,13 @@
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
-import {Home,Settings,CreateProduct} from '../Screens/';
+import {Home, Settings, CreateProduct, Cart} from '../Screens/';
 import colors from '../styles/colors.js';
-import { Image ,Text} from 'react-native';
+import {Image, Text} from 'react-native';
 import imagePath from '../constants/imagePath';
-import HomeStack from './HomeStack'
-
+import HomeStack from './HomeStack';
+import CartStack from './CartStack';
+import navigationStrings from '../constants/navigationStrings';
 
 const Tab = createBottomTabNavigator();
-
-
-
-
 
 function TabRoutes() {
   return (
@@ -23,7 +20,7 @@ function TabRoutes() {
         component={HomeStack}
         options={{
           tabBarLabel: 'Home',
-        
+
           tabBarIcon: ({focused, color, size}) => (
             <Image
               source={imagePath.home}
@@ -36,7 +33,9 @@ function TabRoutes() {
           ),
         }}
       />
-      <Tab.Screen name="Settings" component={Home}
+      <Tab.Screen
+        name={navigationStrings.CART}
+        component={CartStack}
         options={{
           tabBarLabel: 'My Cart',
           tabBarIcon: ({focused, color, size}) => (
@@ -50,8 +49,10 @@ function TabRoutes() {
             />
           ),
         }}
-       />
-      <Tab.Screen name="Settings1" component={CreateProduct} 
+      />
+      <Tab.Screen
+        name={navigationStrings.CREATE_PRODUCT}
+        component={CreateProduct}
         options={{
           tabBarLabel: 'Create',
           tabBarIcon: ({focused, color, size}) => (
@@ -64,8 +65,11 @@ function TabRoutes() {
               }}
             />
           ),
-        }}/>
-      <Tab.Screen name="Settings3" component={Home} 
+        }}
+      />
+      <Tab.Screen
+        name="Settings3"
+        component={Home}
         options={{
           tabBarLabel: 'Dashbord',
           tabBarIcon: ({focused, color, size}) => (
@@ -78,8 +82,11 @@ function TabRoutes() {
               }}
             />
           ),
-        }}/>
-      <Tab.Screen name="Settings4" component={Settings} 
+        }}
+      />
+      <Tab.Screen
+        name="Settings4"
+        component={Settings}
         options={{
           tabBarLabel: 'Settings',
           tabBarIcon: ({focused, color, size}) => (
@@ -92,7 +99,8 @@ function TabRoutes() {
               }}
             />
           ),
-        }}/>
+        }}
+      />
     </Tab.Navigator>
   );
 }

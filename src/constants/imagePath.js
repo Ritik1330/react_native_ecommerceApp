@@ -14,7 +14,9 @@ export default {
   back: require('../assets/images/back.png'),
   bg: require('../assets/images/bg.jpg'),
   profile: require('../assets/images/profile.png'),
-  // user: require('../assets/images/user.png'),
+  cart1: require('../assets/images/cart1.png'),
+  delete: require('../assets/images/delete.png'),
+  drop_dawn: require('../assets/images/drop_dawn.png'),
 
   // dropdownTriangle: require('../assets/images/ic_dropdown.png'),
   // fb: require('../assets/images/ic_facebook.png'),
