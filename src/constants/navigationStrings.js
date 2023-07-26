@@ -1,6 +1,7 @@
 export default {
   LOGIN: 'login',
   SIGN_UP: 'signUp',
+  SIGN_OUT:"SignOut",
   HOME: 'home',
   HOME_STACK: 'homeStack',
   SEARCH: 'search',
@@ -9,6 +10,12 @@ export default {
   SHIPPING_INFO: 'shippingDetails',
   CREATE_PRODUCT: 'createProduct',
   CONFARM: 'confarm',
+  PAYMENT_ORDER:"payment",
+  PROFILE:"profile",
+  SETINGS_STACK:"SetingsStack",
+  SETTINGS:"settings",
+  MY_ORDERS:"myorder",
+
 
   //dddddddddddddddddddd
   OTP_VERIFICATION: 'otpVerfication',

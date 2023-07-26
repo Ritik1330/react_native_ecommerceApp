@@ -26,6 +26,20 @@ export const userSlice = createSlice({
 
       state.error = action.payload.response.data.message;
     },
+    //get profile
+    profileRequst: (state, action) => {
+      state.loading = true;
+    },
+    profileSuccess: (state, action) => {
+      state.loading = false;
+      state.user = action.payload.data.user;
+    },
+    profileFail: (state, action) => {
+      state.loading = false;
+      state.token = null;
+      state.isAuthecated = false;
+      state.error = action.payload.response.data.message;
+    },
     // log out user
     logoutRequest: (state, action) => {
       state.loading = true;
@@ -51,6 +65,9 @@ export const {
   logoutRequest,
   logoutSuccess,
   logoutFail,
+  profileRequst,
+  profileSuccess,
+  profileFail,
 } = userSlice.actions;
 
 export default userSlice.reducer;

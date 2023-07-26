@@ -1,11 +1,13 @@
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
-import {Home, Settings, CreateProduct, Cart} from '../Screens/';
+import {Home, Profile, CreateProduct, Cart} from '../Screens/';
 import colors from '../styles/colors.js';
 import {Image, Text} from 'react-native';
 import imagePath from '../constants/imagePath';
 import HomeStack from './HomeStack';
 import CartStack from './CartStack';
+
 import navigationStrings from '../constants/navigationStrings';
+import SettingsStack from './SettingsStack';
 
 const Tab = createBottomTabNavigator();
 
@@ -85,8 +87,8 @@ function TabRoutes() {
         }}
       />
       <Tab.Screen
-        name="Settings4"
-        component={Settings}
+        name={navigationStrings.SETINGS_STACK}
+        component={SettingsStack}
         options={{
           tabBarLabel: 'Settings',
           tabBarIcon: ({focused, color, size}) => (

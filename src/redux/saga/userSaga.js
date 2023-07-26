@@ -1,5 +1,12 @@
-import {SIGNIN,SIGNOUT} from '../../confing/urls';
-import {loginSuccess, loginFail,logoutSuccess,logoutFail} from '../Slice/userSlice';
+import {SIGNIN, SIGNOUT, PROFILR} from '../../confing/urls';
+import {
+  loginSuccess,
+  loginFail,
+  logoutSuccess,
+  logoutFail,
+  profileSuccess,
+  profileFail,
+} from '../Slice/userSlice';
 import {call, put, takeEvery, takeLatest} from 'redux-saga/effects';
 import axios from 'axios';
 
@@ -21,10 +28,21 @@ function* fetchUser(action) {
     yield put(loginFail(e));
   }
 }
+//get  User profile
+function* fetchProfile(action) {
+  try {
+    const data = yield call(() => axios.get(PROFILR));
+    console.log(data.user);
+    yield put(profileSuccess(data));
+  } catch (e) {
+    // console.log('e');
+
+    yield put(profileFail(e));
+  }
+}
 //logout User
 function* logoutUserSaga(action) {
   try {
-
     const data = yield call(() => axios.get(SIGNOUT));
     // console.log("data");
     yield put(logoutSuccess(data));
@@ -37,6 +55,7 @@ function* logoutUserSaga(action) {
 
 export function* watchUsersAsync() {
   yield takeEvery('user/loginRequst', fetchUser);
+  yield takeEvery('user/profileRequst', fetchProfile);
   yield takeEvery('user/logoutRequest', logoutUserSaga);
   // yield takeEvery(GET_USERS, getUsersSaga)
   // yield takeEvery(GET_USER_BY_ID, getUserByIdSaga)

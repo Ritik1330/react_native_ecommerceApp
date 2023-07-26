@@ -5,6 +5,7 @@ import productsSlice from './Slice/productsSlice';
 import productSlice from './Slice/productSlice';
 import userSlice from './Slice/userSlice';
 import cartSlice from './Slice/cartSlice';
+import orderSlice from './Slice/orderSlice';
 import {rootSaga} from '../redux/saga/index';
 // redux prisist
 import {persistStore, persistReducer} from 'redux-persist';
@@ -20,7 +21,8 @@ const rootReducers = combineReducers({
   products: productsSlice,
   user: userSlice,
   cart: cartSlice,
-  product:productSlice
+  product:productSlice,
+  order:orderSlice,
 });
 
 const persistedReducer = persistReducer(persistConfig, rootReducers);

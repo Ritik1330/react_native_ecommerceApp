@@ -9,11 +9,37 @@ import {
 import React, {Component} from 'react';
 import Header from '../../Components/Header';
 import styles from './styles.js';
-import {useSelector} from 'react-redux';
+import {useDispatch, useSelector} from 'react-redux';
+import {orderInfo,updateQuantity} from '../../redux/Slice/cartSlice';
+import navigationStrings from '../../constants/navigationStrings';
 
-export default function Confarm() {
+export default function Confarm({navigation}) {
+  const dispatch = useDispatch();
   const {cartItems} = useSelector(state => state.cart);
+  const subtotal = cartItems.reduce(
+    (acc, item) => acc + item.quantity * item.price,
+    0,
+  );
 
+  const shippingCharges = subtotal > 1000 ? 0 : 200;
+  const tax = Math.round(subtotal * 0.18);
+
+  const totalPrice = subtotal + tax + shippingCharges;
+  const proceedToPayment = () => {
+    const data = {
+      subtotal,
+      shippingCharges,
+      tax,
+      totalPrice,
+    };
+    dispatch(orderInfo(data));
+
+    dispatch(orderInfo(data));
+
+    navigation.navigate(navigationStrings.PAYMENT_ORDER)
+    // history("/login?redirect=/process/payment");
+    // history("/process/payment");
+  };
   return (
     <View
       style={{
@@ -40,7 +66,9 @@ export default function Confarm() {
                   }}
                 />
                 <Text style={styles.productName}>{item.name}</Text>
-                <Text style={styles.ProductPrice}>{item.quantity}*{item.price}</Text>
+                <Text style={styles.ProductPrice}>
+                  {item.quantity}*{item.price}
+                </Text>
               </View>
             )}
           />
@@ -61,24 +89,23 @@ export default function Confarm() {
           <View style={styles.amauntContainerParent}>
             <View style={styles.amauntContainer}>
               <Text>Subtotal</Text>
-              <Text>{`₹ ${cartItems.reduce(
-          (acc, item) => acc + item.quantity * item.price,
-          0,
-        )}`}</Text>
+              <Text>{`₹ ${subtotal}`}</Text>
             </View>
             <View style={styles.amauntContainer}>
               <Text>Shipping</Text>
-              <Text>$0</Text>
+              <Text>₹ {shippingCharges}</Text>
             </View>
             <View style={styles.amauntContainer}>
               <Text>Tax</Text>
-              <Text>$360</Text>
+              <Text>₹ {tax}</Text>
             </View>
             <View style={styles.amauntContainer}>
               <Text>Total</Text>
-              <Text>$2360</Text>
+              <Text>₹ {totalPrice}</Text>
             </View>
-            <TouchableOpacity style={styles.PyBtn}>
+            <TouchableOpacity
+              onPress={() => proceedToPayment()}
+              style={styles.PyBtn}>
               <Text>Payment</Text>
             </TouchableOpacity>
           </View>

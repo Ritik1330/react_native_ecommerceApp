@@ -56,6 +56,9 @@ const cartSlice = createSlice({
     saveShippingInfo: (state, action) => {
       state.shippingInfo = action.payload;
     },
+    orderInfo: (state, action) => {
+      state.orderInfo = action.payload;
+    },
   },
 });
 
@@ -65,5 +68,6 @@ export const {
   saveShippingInfo,
   updateQuantity,
   removeToCartAll,
+  orderInfo,
 } = cartSlice.actions;
 export default cartSlice.reducer;

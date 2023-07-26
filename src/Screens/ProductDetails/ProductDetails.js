@@ -19,7 +19,7 @@ import Header from '../../Components/Header';
 import {useDispatch, useSelector} from 'react-redux';
 import {productRequst} from '../../redux/Slice/productSlice';
 import {showMessage} from 'react-native-flash-message';
-import { addToCart } from '../../redux/Slice/cartSlice';
+import {addToCart} from '../../redux/Slice/cartSlice';
 
 const ProductDetails = ({navigation, route}) => {
   const width = Dimensions.get('window').width;
@@ -42,10 +42,10 @@ const ProductDetails = ({navigation, route}) => {
     }
   };
   let addToCartHendaler = () => {
-    cartdata={
+    cartdata = {
       product,
-      quantity:quantity
-    }
+      quantity: quantity,
+    };
     dispatch(addToCart(cartdata));
     showMessage({
       message: 'product add to cart',
@@ -92,7 +92,7 @@ const ProductDetails = ({navigation, route}) => {
           // onSnapToItem={index => console.log('current index:', index)}
           renderItem={({item, index}) => (
             <View style={styles.carouselView}>
-           
+              {/* {console.log(item)} */}
               <Image style={styles.carouselImage} source={{uri: item}} />
             </View>
           )}

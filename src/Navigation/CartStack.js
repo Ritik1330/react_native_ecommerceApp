@@ -9,6 +9,7 @@ import {
   Cart,
   ShippingDetails,
   Confarm,
+  Payment,
 } from '../Screens';
 import navigationStrings from '../constants/navigationStrings';
 
@@ -20,6 +21,7 @@ function HomeStack() {
       <Stack.Screen name={navigationStrings.CART} component={Cart} />
       <Stack.Screen name={navigationStrings.SHIPPING_INFO} component={ShippingDetails}/>
       <Stack.Screen name={navigationStrings.CONFARM} component={Confarm} />
+      <Stack.Screen name={navigationStrings.PAYMENT_ORDER} component={Payment} />
     </Stack.Navigator>
   );
 }

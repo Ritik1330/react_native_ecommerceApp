@@ -57,12 +57,12 @@ export default function ShippingDetails({navigation}) {
   });
   return (
  
-    <View style={{ backgroundColor: '#fff',height:Dimensions.get("window").height}}>
+    <View style={{ backgroundColor: '#fff',flex:1,}}>
       <Header />
-      <ScrollView
+      {/* <ScrollView
        showsVerticalScrollIndicator={false}
        showsHorizontalScrollIndicator={false}
-      >
+      > */}
       <View
         style={{
           height: '6%',
@@ -192,7 +192,7 @@ export default function ShippingDetails({navigation}) {
           <Text>Continue</Text>
         </TouchableOpacity>
       </View>
-      </ScrollView>
+      {/* </ScrollView> */}
     </View>
  
 
